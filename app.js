@@ -2,23 +2,27 @@ const { json } = require("express"); //for using external api
 const express = require("express");
 const https = require("https"); //for using api
 const bodyParser = require("body-parser"); //for handling post request
+const private=require(__dirname+"/private.js");
 const app = express();
+
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/public", express.static("public"));
+
+
 app.get("/", function (req, res) {
   //web starting point
   res.sendFile(__dirname + "/index.html"); //server send this file on web
 });
-app.post(
-  "/",
-  function (
-    req,
-    res //for handling post request if file on web send post request
-  ) {
-    console.log(req.body.cityName);
-    console.log("post request working");
+
+
+
+app.post("/",function (req,res){ //for handling post request if file on web send post request
+    // console.log(req.body.cityName);
+    // console.log("post request working");
     const query = req.body.cityName; //city name enter by user ,will come's  here
-    const apiKey = "3894e04a4a9d2245f117998ac5d8416f"; //my weathermap api key
+    const apiKey = private.apiKey; //my weathermap api key
 
     const url =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -64,6 +68,8 @@ app.post(
     });
   }
 );
+
+
 
 app.listen(3000, function () {
   //for checking your server is working or not
