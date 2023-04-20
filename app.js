@@ -58,7 +58,7 @@ app.post("/",function (req,res){ //for handling post request if file on web send
         );
         //you can send only one res.send but can write multiple res.write
         res.write(
-          "<h1>weather description is: " + weatherDescription + "</h1>"
+          "<h1>weather description is: " + weatherDescription + "</h1>" //update into diferent html page
         );
         res.write("<img src=" + imageURL + " alt=reload>");
         // res.sendFile(__dirname+"/send.html"); this is not working
