@@ -13,7 +13,7 @@ app.use("/public", express.static("public"));
 
 app.get("/", function (req, res) {
   //web starting point
-  res.sendFile(__dirname + "/index.html"); //server send this file on web
+  res.sendFile(__dirname + "/public/index.html"); //server send this file on web
 });
 
 
